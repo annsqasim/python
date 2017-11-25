@@ -3,8 +3,9 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.contrib.auth.models import User, Group
+from tutorial.quickstart.models import Ticket
 from rest_framework import viewsets
-from tutorial.quickstart.serializers import UserSerializer, GroupSerializer
+from tutorial.quickstart.serializers import UserSerializer, GroupSerializer, TicketSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -21,3 +22,10 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+class TicketViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
